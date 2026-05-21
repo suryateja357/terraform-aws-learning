@@ -1,7 +1,18 @@
-terraform {
-  required_version = ">= 1.0"
+resource "aws_s3_bucket" "first" {
+  bucket        = "first-bucket"
+  force_destroy = true
+  tags = {
+    name   = "new"
+    region = "east-1"
+  }
 }
 
-output "message" {
-  value = "Terraform setup successful!"
+
+resource "aws_s3_bucket_versioning" "version_first" {
+  bucket = aws_s3_bucket.first.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
+
+
