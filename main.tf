@@ -1,18 +1,15 @@
-resource "aws_s3_bucket" "first" {
-  bucket        = "first-bucket"
-  force_destroy = true
+resource "aws_s3_bucket" "my-bucket" {
+  bucket = var.my_bucket
+
   tags = {
-    name   = "new"
-    region = "east-1"
+    team        = var.team_name
+    Environment = var.environment
+
   }
 }
-
-
-resource "aws_s3_bucket_versioning" "version_first" {
-  bucket = aws_s3_bucket.first.id
+resource "aws_s3_bucket_versioning" "my-bucket-versioning" {
+  bucket = aws_s3_bucket.my-bucket.id
   versioning_configuration {
     status = "Enabled"
   }
 }
-
-
