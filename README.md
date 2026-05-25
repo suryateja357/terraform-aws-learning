@@ -79,3 +79,12 @@ Verification
 aws sts get-caller-identity
 
 Successfully authenticated with AWS account.
+
+Implemented Terraform configuration for:
+
+EC2 instance creation
+Security Group with SSH (22) and HTTP (80) access
+Variable-based configuration using variables.tf and terraform.tfvars
+Resource tagging
+SG attachment to EC2
+Basic dependency handling between resources
